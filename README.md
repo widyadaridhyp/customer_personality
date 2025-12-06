@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Customer Personality - Streamlit App
 
 ## Struktur
@@ -23,3 +24,6 @@ customer_personality/
 ├─ docker-compose.yml
 └─ README.md
 
+=======
+# Customer Personality Analysis
+>>>>>>> a46ceaa879c91d9ea748f9ab113a42bdbc3e3e30
