@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "#BB86FC"               # ungu neon
+backgroundColor = "#0E0E0E"            # hitam pekat
+secondaryBackgroundColor = "#1F1B24"   # abu keunguan lembut
+textColor = "#FFFFFF"                  # teks putih
+font = "sans serif"
+
+[server]
+enableCORS = false
+enableXsrfProtection = true

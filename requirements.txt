@@ -1,0 +1,17 @@
+fastapi
+numpy
+pandas
+scikit-learn
+xgboost
+uvicorn
+python-multipart
+mrmr-selection
+pydantic
+matplotlib
+seaborn
+plotly
+ipykernel
+optuna
+imblearn
+streamlit
+joblib
