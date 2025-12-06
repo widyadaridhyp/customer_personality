@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Customer Personality - Streamlit App
 
 ## Structure Detail
