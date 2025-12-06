@@ -1,12 +1,6 @@
 <<<<<<< HEAD
 # Customer Personality - Streamlit App
 
-## Struktur
-- `train_pipeline.py` — training pipeline; run this to produce `model/` artifacts
-- `app/` — streamlit app and preprocessing/model wrapper
-- `model/` — saved artifacts (created after training)
-- `data/marketing_campaign.csv` — raw data
-
 ## Structure Detail
 customer_personality/
 ├─ data/
@@ -24,6 +18,3 @@ customer_personality/
 ├─ docker-compose.yml
 └─ README.md
 
-=======
-# Customer Personality Analysis
->>>>>>> a46ceaa879c91d9ea748f9ab113a42bdbc3e3e30
