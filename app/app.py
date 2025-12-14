@@ -110,7 +110,7 @@ with tab1:
 # =====================================================================
 with tab2:
 
-    st.header("📂 Upload Dataset untuk Analisis & Prediksi Massal")
+    st.header("📂 Upload Dataset for Analysis and Predict Response Customer")
 
     uploaded = st.file_uploader("Upload CSV File", type=["csv"])
 
@@ -140,15 +140,15 @@ with tab2:
             y_col = st.selectbox('Choose second variable', numeric_cols, index=0)
             
             fig = px.scatter(df_raw, x=x_col, y=y_col)
-            st.plotly_chart(fig)
+            st.plotly_chart(fig, key=f"scatter_{x_col}_{y_col}")
 
             col1, col2 = st.columns(2)
             with col1:
                 fig1 = px.histogram(df_raw, x=x_col, nbins=30, title=f"Distribusi {x_col}")
-                st.plotly_chart(fig1, use_container_width=True)
+                st.plotly_chart(fig1, use_container_width=True, key=f"hist_x_{x_col}")
             with col2:
                 fig2 = px.histogram(df_raw, x=y_col, nbins=30, title=f"Distribusi {y_col}")
-                st.plotly_chart(fig2, use_container_width=True)
+                st.plotly_chart(fig2, use_container_width=True, key=f"hist_y_{y_col}")
 
         # Monetary untuk heatmap
         df_raw["monetary"] = (
@@ -247,19 +247,23 @@ with tab2:
             cat_cols = ["education", "marital_status"] + \
                     ["acceptedcmp1","acceptedcmp2","acceptedcmp3","acceptedcmp4","acceptedcmp5"]
 
-            cat_sel = st.selectbox("Choose Categorical Variable", cat_cols)
-
+            cat_x = st.selectbox("Choose First Categorical Variable", cat_cols, key="cat_x")
+            cat_y = st.selectbox(
+                "Choose Second Categorical Variable",
+                [c for c in cat_cols if c != cat_x],
+                key="cat_y"
+            )
             # ----------- CASE 1: dataset punya response -----------
             if "response" in df_vis.columns:
                 st.markdown("### 🟦 Stacked Percentage Plot")
 
-                ct = pd.crosstab(df_vis[cat_sel], df_vis["response"])
+                ct = pd.crosstab(df_vis[cat_x], df_vis["response"])
                 pct = ct.div(ct.sum(axis=1), axis=0) * 100
 
                 fig, ax = plt.subplots(figsize=(8,6))
                 pct.plot(kind="bar", stacked=True, colormap="crest", ax=ax)
                 ax.set_ylabel("Percentage (%)")
-                ax.set_title(f"{cat_sel} vs Response")
+                ax.set_title(f"{cat_x} vs Response")
 
                 # Add labels
                 for i in range(len(pct)):
@@ -274,11 +278,17 @@ with tab2:
 
             # ----------- CASE 2: dataset TANPA response -----------
             else:
-                st.markdown("### 🟧 Countplot (No Target Available)")
+                st.markdown("### 🟧 Stacked Distribution (No Target)")
 
-                fig, ax = plt.subplots(figsize=(6,4))
-                sns.countplot(data=df_vis, x=cat_sel, palette="crest", ax=ax)
-                ax.set_title(f"Distribution of {cat_sel}")
+                ct = pd.crosstab(df_vis[cat_x], df_vis[cat_y])
+
+                fig, ax = plt.subplots(figsize=(8,6))
+                ct.plot(kind="bar", stacked=True, colormap="crest", ax=ax)
+
+                ax.set_ylabel("Count")
+                ax.set_title(f"{cat_x} vs {cat_y}")
+                plt.xticks(rotation=0)
+
                 st.pyplot(fig)
 
         # ==========================================================
