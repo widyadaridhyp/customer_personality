@@ -1,29 +1,31 @@
-<<<<<<< HEAD
 # Customer Personality - Streamlit App
 
-## Struktur
-- `train_pipeline.py` — training pipeline; run this to produce `model/` artifacts
-- `app/` — streamlit app and preprocessing/model wrapper
-- `model/` — saved artifacts (created after training)
-- `data/marketing_campaign.csv` — raw data
+## Problem Statement
+The company wants to identify customers who are likely to respond positively to marketing campaigns (response column = 1). However, the number of customers who respond is very small compared to those who do not respond, **resulting in class imbalance.**
 
-## Structure Detail
-customer_personality/
-├─ data/
-│  └─ data_fix.csv
-├─ model/                
-│  └─ (auto-generated oleh train_pipeline.py)
-├─ app/
-│  ├─ model_pipeline.py
-│  ├─ api.py
-│  └─ app.py
-├─ train_pipeline.py
-├─ requirements.txt
-├─ Dockerfile.fastapi
-├─ Dockerfile.streamlit
-├─ docker-compose.yml
-└─ README.md
+In a business context, **failing to detect customers who are actually interested (False Negative)** will cause the company to lose conversion opportunities, reduce campaign effectiveness, and waste marketing budget allocation.
 
-=======
-# Customer Personality Analysis
->>>>>>> a46ceaa879c91d9ea748f9ab113a42bdbc3e3e30
+Therefore, the main objective of the model is not only to achieve high accuracy, but to **maximize Recall** for the positive class (response = 1) — that is, to ensure that as many genuinely interested customers as possible are detected by the model.
+
+
+## Data Understanding
+
+| Variable               | Type               | Categories / Levels                 | Description                          |
+|------------------------|--------------------|--------------------------------------|--------------------------------------|
+| **income**             | Numeric (int/float)| —                                    | Annual customer revenue              |
+| **recency**            | Numeric (int)      | —                                    | Days since last purchase             |
+| **numwebvisitsmonth**  | Numeric (int)      | —                                    | Website visits per month             |
+| **numwebpurchases**    | Numeric (int)      | —                                    | Purchases via website                |
+| **numstorepurchases**  | Numeric (int)      | —                                    | Purchases in physical store          |
+| **numcatalogpurchases**| Numeric (int)      | —                                    | Purchases via catalog                |
+| **numdealspurchases**  | Numeric (int)      | —                                    | Purchases during deals/promotions    |
+| **mntwines**           | Numeric (float/int)| —                                    | Expenditure on wine                  |
+| **mntfruits**          | Numeric (float/int)| —                                    | Expenditure on fruits                |
+| **mntmeatproducts**    | Numeric (float/int)| —                                    | Expenditure on meat                  |
+| **mntfishproducts**    | Numeric (float/int)| —                                    | Expenditure on fish                  |
+| **mntsweetproducts**   | Numeric (float/int)| —                                    | Expenditure on sweets                |
+| **mntgoldprods**       | Numeric (float/int)| —                                    | Expenditure on gold products         |
+| **education**          | Categorical        | Basic, Graduation, Master, PhD       | Highest education level              |
+| **marital_status**     | Categorical        | Married, Together, Divorced, Single  | Customer marital status              |
+
+
