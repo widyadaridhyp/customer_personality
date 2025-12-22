@@ -7,6 +7,8 @@ In a business context, **failing to detect customers who are actually interested
 
 Therefore, the main objective of the model is not only to achieve high accuracy, but to **maximize Recall** for the positive class (response = 1) — that is, to ensure that as many genuinely interested customers as possible are detected by the model.
 
+## Deployment Link
+https://customerpersonality-3cfhpxj9miety2mvrbkddv.streamlit.app/ 
 
 ## Data Understanding
 
