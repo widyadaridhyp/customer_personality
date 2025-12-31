@@ -10,6 +10,9 @@ Therefore, the main objective of the model is not only to achieve high accuracy,
 ## Deployment Link
 https://customerpersonality-3cfhpxj9miety2mvrbkddv.streamlit.app/ 
 
+## PowerPoint File
+https://github.com/widyadaridhyp/customer_personality/blob/main/Portfolio%20Customer%20Personality.pdf
+
 ## Data Understanding
 
 | Variable               | Type               | Categories / Levels                 | Description                          |
